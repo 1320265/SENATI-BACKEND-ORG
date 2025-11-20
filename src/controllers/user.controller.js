@@ -1,3 +1,4 @@
+// src/controllers/user.controllers.js
 const User = require("../models/user");
 
 // CRUD USERS

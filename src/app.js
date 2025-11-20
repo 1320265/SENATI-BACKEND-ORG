@@ -1,3 +1,4 @@
+// src/app.js
 const express = require("express");
 const sequelize = require("./settings/db");
 const userRoutes = require("./routes/user.routes");
