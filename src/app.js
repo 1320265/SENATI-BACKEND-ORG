@@ -2,11 +2,13 @@
 const express = require("express");
 const sequelize = require("./settings/db");
 const userRoutes = require("./routes/user.routes");
+const personaRoutes = require("./routes/personas.routes");
 
 const app = express();
 app.use(express.json());
 
 app.use("/u", userRoutes);
+app.use("/p", personaRoutes)
 
 sequelize.authenticate()
     .then(() => console.log("Conectando a la DB"))

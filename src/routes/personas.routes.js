@@ -1,11 +1,19 @@
-// src/routes/personas.routes.js
-const express = require("express");
-const controller = require("../controllers/personas.controller");
-const router = express.Router();
+// src/models/personas.js
+const { DataTypes } = require("sequelize");
+const sequelize = require("../settings/db");
 
-router.get("/personas/", controller.listPersonas);
-router.post("/personas/new/", controller.createPersona); // Usaremos /new/ por consistencia con tu userController.js
-router.put("/personas/:id", controller.updatePersona);
-router.delete("/personas/:id", controller.destroyPersona);
+const Personas = sequelize.define(
+    "persona",
+    {
+        nombres: {type: DataTypes.STRING(100), allowNull: false},
+        apellidos: {type: DataTypes.STRING(100), allowNull: false},
+        dni: {type: DataTypes.STRING(20), allowNull: false, unique: true},
+        fecha_nac: {type: DataTypes.DATEONLY} 
+    },
+    {
+        tableName: "personas",
+        timestamps: false
+    }
+);
 
-module.exports = router;
+module.exports = Personas;
